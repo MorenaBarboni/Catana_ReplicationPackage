@@ -22,7 +22,7 @@ The set-up and results for the specific projects can be found in the respective 
 
 | Command       | Description                        | Usage                    | Example                             |
 |---------------|------------------------------------|--------------------------|-------------------------------------|
-|`capture <nTx> [startBlock]`    | Extract a window of max nTx transactions executed on the Proxy, from an optional startBlock | `$ npm start buildWindow` | `$ npm start buildWindow 10000` |
+|`capture <nTx> [startBlock]`    | Extract a window of max nTx transactions executed on the Proxy, from an optional startBlock | `$ npm start capture` | `$ npm start capture 10000` |
 | `replay <strategy>`    | Replay transactions on the local USC (single txHash, all) | `$ npm start replay <strategy>` | `$ npm start replay 0x078abc...` |
 | `replayMutants`    | Replay transactions on the SuMo mutants (or on a specific mutant) according to a strategy (single txHash, all)| `$ npm start replayMutants  <strategy> [mutantHash]` | `$ npm start replayMutants all` |
 | `clean`    | Clean the testing environment | `$ npm start clean` | `$ npm start clean` |
