@@ -49,9 +49,10 @@ async function fetchContractSourcesByAddress(contractAddress, contractDir) {
  * @param {Number} startBlock - the startblock from which to extract transactions (1 by default)
  * 
  */
-async function captureProxyTxs(size, startBlock = 1) {
+async function getProxyTxs(size, startBlock = 1) {
+	//Endblock set to 20357000 for experiment
 	let filteredTx = []
-	let txs = await etherscan.account.txlist(catanaConfig.DeployedProxyAddr, startBlock, 99999999, 1, 10000, 'desc');
+	let txs = await etherscan.account.txlist(catanaConfig.DeployedProxyAddr, startBlock, 20357000, 1, 10000, 'desc');
 	let txList = txs.result;
 
 	txList.forEach(tx => {
@@ -290,7 +291,7 @@ module.exports = {
 	getABI: getABI,
 	getBytecode: getBytecode,
 	fetchContractSourcesByAddress: fetchContractSourcesByAddress,
-	captureProxyTxs: captureProxyTxs,
+	getProxyTxs: getProxyTxs,
 	getAllTransactions: getAllTransactions,
 	getDeployedContractSourcePath: getDeployedContractSourcePath,
 	getFileName: getFileName,
