@@ -3,7 +3,7 @@
 </div>
 
 # BSTPStaking Experiment Branch
-This branch includes the experimental setup and data for the Lucids project.
+This branch includes the experimental setup and data for the BSTPStaking project.
 
 ## BSTPStaking Project Details
 
