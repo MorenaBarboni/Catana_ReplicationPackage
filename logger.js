@@ -229,7 +229,7 @@ function logMutantResultToJson(transaction, mutantHash, decodedTransaction, outc
 * Prepares the test results to be logged for a given transaction
 * @param {Object} transaction - the replayed transaction data
 * @param {Object} decodedTransaction - ether's parsed transaction data
-* @param {Object} storageChanges - the outcomeChanges
+* @param {Object} outcomeChanges - the outcomeChanges
 * @param {Object} storageChanges - the storageChanges
 * @param {Boolean} result - the replay testing session result    
 * @param {Number} statusCode - the replay testing session status code

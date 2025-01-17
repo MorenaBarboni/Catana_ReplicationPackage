@@ -1,0 +1,23 @@
+:root {
+    /* accessible everywhere */
+    --ms-color: #c4c7cc;
+}
+
+#ms {
+    color: var(--ms-color);
+}
+
+#summary {
+    border-style: solid;
+    border-width: 10px;
+    border-color: var(--ms-color);
+    background-color: var(--ms-color);
+}
+
+.internal-rounded {
+    background-color: white;
+}
+
+.chart {
+    max-height: 50%;
+}
