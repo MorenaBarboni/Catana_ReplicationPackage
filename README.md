@@ -64,7 +64,7 @@ The Catana configuration is specified in a [catana-config.js](https://github.com
  | ```DeployedLogicAddr```| Address of the Logic contract (V1) deployed on the Mainnet | - |
  | ```stateVarsBlacklist```| Blacklist for state variables to be ignored during Capture-Replay testing |  ```["__gap", "_gap"]```| 
 | ```INFURA_KEY```| Infura api key | - |
-| ```ETHERSCAN_KE```| Etherscan api key | - |
+| ```ETHERSCAN_KEY```| Etherscan api key | - |
 
 Here's a simple example of ```catana-config.js```.
 
