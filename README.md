@@ -16,11 +16,8 @@ The full Catana replay testing configuration is specified in the ```./catana-con
 * Deployed Sources ```./contracts/deployed```: Source code of the Proxy and Logic contracts deployed on the Mainnet; 
 * Deployed Baseline: ```./contracts/```: A copy of the deployed source codes to be mutated during the replay testing process; 
 
-
 ### Mutants
 *Mutants M*: We generated 100 random mutants of the Logic contract L1. The Sources for all the 100 random mutants can be found in: ```./sumo/results/mutants``` 
-
-
 
 ### Transaction History
 *Transaction history T*: The proxy P features 2,547 successfull transaction. These can be found in : ```./catana/transactions/transactions.json```
@@ -30,11 +27,10 @@ The transactions were captured considering:
 - *StartBlock*: 0
 
 ### Evaluated Test Suites
-The data for each test suite built using different policies (last, random, unique, frequency) and budgets (n) can be found in  ```./catana/results/lucids-<policyName>-i_max_20.csv```
+The data for each test suite built using different policies (last, random, unique, frequency) and budgets (n) can be found in  ```./catana/results/gmmtoken-<policyName>-i_max_20.csv```
 
 ### Replay Testing Results
 The complete replay testing results for all transactions in T on each mutant M can be found in: ```./catana/results/replayMatrix.csv```
-
 
 ## Running the Experiment
 
