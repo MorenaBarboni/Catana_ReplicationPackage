@@ -27,7 +27,7 @@ The transactions were captured considering:
 - *StartBlock*: 0
 
 ### Evaluated Test Suites
-The data for each test suite built using different policies (last, random, unique, frequency) and budgets (n) can be found in  ```./catana/results/lucids-<policyName>-i_max_20.csv```.
+The data for each test suite built using different policies (last, random, unique, frequency) and budgets (n) can be found in  ```./catana/results/lucids-<policyName>-i_max_20.csv```
 
 ### Replay Testing Results
 The complete replay testing results for all transactions in T on each mutant M can be found in: ```./catana/results/replayMatrix.csv```
@@ -38,5 +38,5 @@ The complete replay testing results for all transactions in T on each mutant M c
 The current branch is already set-up for the experiment on Lucids. If you want to re-run the experiment:
 
 1. Install the dependencies: ```npm install```;
-2. Set up your Infura and Etherscan API keys in the ```catana-config.js```
+2. Set up your Infura and Etherscan API keys in the ```catana-config.js```;
 3. You can start replay testing with all transactions in ```transactions.json``` on all the mutants using ```npm start replayMutants all```. 
