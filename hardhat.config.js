@@ -3,7 +3,6 @@ require('hardhat-storage-layout');
 
 module.exports = {
   networks: {
-    //network forking configured in the test script
     //hardhat: {
     //  allowUnlimitedContractSize: true
     //}   
@@ -12,6 +11,12 @@ module.exports = {
     compilers: [
       {
         version: "0.8.10",
+      },
+      {
+        version: "0.5.16",
+      },
+      {
+        version: "0.5.12",
       }
     ],
     settings: {
