@@ -166,7 +166,7 @@ function logResultToJson(transaction, mutantHash, decodedTransaction, outcomeCha
 * Appends the test results of the current transaction to the resultsJson.
 * @param {Object} transaction - the replayed transaction data
 * @param {Object} decodedTransaction - ether's parsed transaction data
-* @param {Object} storageChanges - the outcomeChanges
+* @param {Object} outcomeChanges - the outcomeChanges
 * @param {Object} storageChanges - the storageChanges
 * @param {Boolean} result - the replay testing session result    
 * @param {Number} statusCode - the replay testing session status code 
