@@ -2,85 +2,43 @@
   <img src="resources/logo.png" width="250" />
 </div>
 
-# Catana - Replication Package
-This repository contains the replication package for Catana. The main branch includes a fork of [Catana](https://github.com/MorenaBarboni/Catana_ReplicationPackage) that permits ro run capture-replay testing on the sumo mutants.
+# BSTPStaking Experiment Branch
+This branch includes the experimental setup and data for the Lucids project.
 
-The set-up and results for the specific projects can be found in the respective branches:
-* BSTPStaking - ```git checkout experiment-bstpstaking```
-* GMMToken - ```git checkout experiment-gmmtoken```
-* DeDudes - ```git checkout experiment-dedudes```
-* Lucids - ```git checkout experiment-lucids```
-* Paladin - ```git checkout experiment-paladin```
+## BSTPStaking Project Details
 
-## Getting Started
-1. Install the dependencies: with ```npm install```.
-2. Add your Infura and Etherscan API keys in ```catana-config.js```.
-3. Add your USC configuration in ```catana-config.js```.
-4. If needed, add the correct compiler version in ```hardhat-config.js```.
+### Smart Contracts
 
-## Commands
+The full Catana replay testing configuration is specified in the ```./catana-config.js``` file.
 
-| Command       | Description                        | Usage                    | Example                             |
-|---------------|------------------------------------|--------------------------|-------------------------------------|
-|`capture <nTx> [startBlock]`    | Extract a window of max nTx transactions executed on the Proxy, from an optional startBlock | `$ npm start buildWindow` | `$ npm start buildWindow 10000` |
-| `replay <strategy>`    | Replay transactions on the local USC (single txHash, all) | `$ npm start replay <strategy>` | `$ npm start replay 0x078abc...` |
-| `replayMutants`    | Replay transactions on the SuMo mutants (or on a specific mutant) according to a strategy (single txHash, all)| `$ npm start replayMutants  <strategy> [mutantHash]` | `$ npm start replayMutants all` |
-| `clean`    | Clean the testing environment | `$ npm start clean` | `$ npm start clean` |
+* Deployed Proxy Contract P Address (BSTPStakingProxy.sol): ```0x57ba886442d248c2e7a3a5826f2b183a22ecc73e```
+* Deployed Logic Contract L1 Address (BSTPStaking.sol): ```0x5d2c0cc239b33ffc01337c90194acacd50c79088```
+* Deployed Sources ```./contracts/deployed```: Source code of the Proxy and Logic contracts deployed on the Mainnet; 
+* Deployed Baseline: ```./contracts/```: A copy of the deployed source codes to be mutated during the replay testing process; 
 
-## Project Structure
+### Mutants
+*Mutants M*: We generated 100 random mutants of the Logic contract L1. The Sources for all the 100 random mutants can be found in: ```./sumo/results/mutants``` 
 
-### Catana modules and configuration files
-* ```catana-config.js```: project configuration; 
-* ```commands.js```: command interface;  
-* ```decoder.js```: module for processing contract storage data and replay testing information;  
-* ```fetchProcessingData.js```: module for fetching data from APIs, files and other artifacts;  
-* ```index.js```: main; 
-* ```scraper.js```: module for scraping account state diff from Etherscan; 
-* ```testInterface.js```: interface for running Hardhat scripts;  
-* ```test/test_mainnet_hardhat.js```: the core replay test script of Catana;
-* ```validator.js```: module for validating the replay testing results;
+### Transaction History
+*Transaction history T*: The proxy P features 1,175 successfull transaction. These can be found in : ```./catana/transactions/transactions.json```
 
+The transactions were captured considering:
+- *EndBlock*: 20357000
+- *StartBlock*: 16483397 + 1
+- *UpgradeBlock*: 16483397 includes the upgrade transaction for the Logic contract
+- *UpgradeTransaction*: 0xe8fdc47e39c5520a73ad64a8ee495fb083edfcc514bf51200f8034d8ad680747
 
-### Hardhat directories and config files
-* ```artifacts/```: compiled hardhat artifacts;
-* ```contracts/```: source codes of the Proxy contract, and of the Local Logic contract under test (V2);
-* ```contracts/deployed```: source codes of the Proxy contract, and of the old Logic contract deployed on Mainnet (V1);
-* ```hardhat.config.js```: Hardhat configuration file; 
+### Evaluated Test Suites
+The data for each test suite built using different policies (last, random, unique, frequency) and budgets (n) can be found in  ```./catana/results/bstpstaking-<policyName>-i_max_20.csv```
 
-## Configuration
+### Replay Testing Results
+The complete replay testing results for all transactions in T on each mutant M can be found in: ```./catana/results/replayMatrix.csv```
 
-The Catana configuration is specified in a [catana-config.js](https://github.com/MorenaBarboni/Catana/blob/main/src/catana-config.js) file.
+## Running the Experiment
 
-| Field | Description | Default Value |
-| ------ | ------ |  :----: |
-| ```catanaDir```| name of the directory where the catana logs are saved | ```./catana``` |
-| ```sumoDir```| path to the directory where the sumo artifacts are saved | ```./sumo``` |
-| ```transactionsPath```| path to the file containing the transactions to be replayed | ```./catana/transactions/transactions.json``` |
-| ```DeployedSourcesDir```| path to the folder where the sources of the deployed contracts will be stored | ```./contracts/deployed``` |
-| ```UpgradedSourcesDir```| path to the folder where the sources of the upgraded contracts (SUT) are stored | ```./contracts``` |
-| ```ProxyPath```| Local path to the source code of the Proxy contract | - |
- | ```UpgradedLogicPath```| Local path to the source code of the upgraded Logic contract under test | - | 
- | ```DeployedProxyAddr```| Address of the Proxy contract deployed on the Mainnet | - |  
- | ```DeployedLogicAddr```| Address of the Logic contract (V1) deployed on the Mainnet | - |
- | ```stateVarsBlacklist```| Blacklist for state variables to be ignored during Capture-Replay testing |  ```["__gap", "_gap"]```| 
-| ```INFURA_KEY```| Infura api key | - |
-| ```ETHERSCAN_KEY```| Etherscan api key | - |
+### Running the Mutation Testing Experiment
+The current branch is already set-up for the experiment on BSTPStaking. If you want to re-run the experiment:
 
-Here's a simple example of ```catana-config.js```.
-
-```
-module.exports = {
-    catanaDir: "./catana",
-    sumoDir: "./sumo",
-    transactionsPath: "./catana/transactions/transactions.json",
-    DeployedSourcesDir: "./contracts/deployed",
-    UpgradedSourcesDir: "./contracts",
-    ProxyPath: "./contracts/CErc20Delegator.sol",
-    UpgradedLogicPath: "./contracts/CErc20Delegate.sol",
-    DeployedProxyAddr: "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
-    DeployedLogicAddr: "0xa035b9e130F2B1AedC733eEFb1C67Ba4c503491F",
-    stateVarsBlacklist: ["__gap", "_gap", "myVar"],
-    INFURA_KEY: "your-infura-key",
-    ETHERSCAN_KEY: "your-etherscan-key"
-}
-```
+1. Install the dependencies: ```npm install```;
+2. Set up your Infura and Etherscan API keys in the ```catana-config.js```;
+3. You can start replay testing with all transactions in ```transactions.json``` on all the mutants using ```npm start replayMutants all```. 
