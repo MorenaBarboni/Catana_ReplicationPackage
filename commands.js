@@ -3,7 +3,6 @@ const chalk = require('chalk')
 const yargs = require('yargs')
 const index = require('./index.js');
 const fetchProcessingData = require('./fetchProcessingData.js');
-const scraper = require('./scraper.js');
 
 yargs
   .usage('$0 <cmd> [args]')
@@ -47,16 +46,6 @@ yargs
       })
   }, (argv) => {
     index.replayOnMutants(argv.strategy, argv.mutantHash)
-  })
-  .command('scrape <txHash>', 'Scrape State Diff caused by a transaction from Etherscan', (yargs) => {
-    yargs
-      .positional('txHash', {
-        type: 'string',
-        describe: 'transaction hash',
-        example: '0x123...'
-      })
-  }, (argv) => {
-    scraper.scrapePage(argv.txHash)
   })
   .help()
   .alias('h', 'help')
