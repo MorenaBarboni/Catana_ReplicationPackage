@@ -50,8 +50,9 @@ async function fetchContractSourcesByAddress(contractAddress, contractDir) {
  * 
  */
 async function captureProxyTxs(size, startBlock = 1) {
+	//Endblock set to 20357000 for experiment
 	let filteredTx = []
-	let txs = await etherscan.account.txlist(catanaConfig.DeployedProxyAddr, startBlock, 99999999, 1, 10000, 'desc');
+	let txs = await etherscan.account.txlist(catanaConfig.DeployedProxyAddr, startBlock, 20357000, 1, 10000, 'desc');
 	let txList = txs.result;
 
 	txList.forEach(tx => {

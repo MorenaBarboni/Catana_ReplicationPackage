@@ -1,0 +1,66 @@
+:root {
+    /* accessible everywhere */
+    --ms-color: #c4c7cc;
+}
+
+tr {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#contracts-table td {
+    cursor: pointer;
+}
+
+#ms {
+    color: var(--ms-color);
+}
+
+.icon {
+    max-height: 35px;
+    max-width: 35px;
+    cursor: pointer;
+    transition: transform .9s;
+}
+
+.icon-l {
+    max-height: 40px;
+    max-width: 40px;
+    cursor: pointer;
+    transition: transform .9s;
+}
+
+.icon-l:hover {
+    background-color: #bbbec2;
+}
+
+.alert-icon {
+    max-height: 20px;
+    max-width: 20px;
+}
+
+#summary {
+    border-style: solid;
+    border-width: 10px;
+    border-color: var(--ms-color);
+    background-color: var(--ms-color);
+}
+
+.internal-rounded {
+    background-color: white;
+}
+
+.chart {
+    max-height: 50%;
+}
+
+.progress {
+    width: 100%;
+    background-color: rgb(210, 208, 208) !important;
+}
+
+#operators-table thead {
+    position: sticky;
+    top: 0px;
+    background-color: white;
+}

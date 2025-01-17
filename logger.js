@@ -150,7 +150,7 @@ function appendToFile(filePath, row) {
 * @param {Object} transaction - the replayed transaction data
 * @param {String} mutantHash - the hash of the mutant on which the transaction was replayed (optional) 
 * @param {Object} decodedTransaction - ether's parsed transaction data
-* @param {Object} storageChanges - the outcomeChanges
+* @param {Object} outcomeChanges - the outcomeChanges
 * @param {Object} storageChanges - the storageChanges
 * @param {Boolean} result - the replay testing session result    
 * @param {Number} statusCode - the replay testing session status code 
