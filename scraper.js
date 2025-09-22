@@ -44,7 +44,7 @@ async function scrapePage(txHash) {
 
             //Parse the table data
             const parsedTableData = parseTableData(tableData);
-    
+
             //console.log('Extracted Table Data:', parsedTableData);
             console.log('- Etherscan accountstatediff successfully extracted');
             return parsedTableData;
@@ -92,7 +92,7 @@ function parseTableData(tableData) {
     for (let i = 1; i < tableData.length; i++) {
         const row = tableData[i];
 
-        if (row[1].startsWith('0x')) {
+        if (row[1]?.startsWith('0x')) {
             // This row contains address information
             if (currentAddressEntry) {
                 parsedData.push(currentAddressEntry);
